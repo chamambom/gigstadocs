@@ -3,4 +3,16 @@ plugins:
   - jekyll-remote-theme
 
 title: GigSta Documentation
-logo: /assets/logo.png # optional if you have a logo file
+logo: /assets/logo.png
+
+# Top-level header pages (appear in top nav)
+header_pages:
+  - index.md
+  - ArchitectureOverview.md
+
+# Optional manual sidebar navigation (Just the Docs auto-generates from nav_order & parent frontmatter)
+nav:
+  - title: Home
+    url: /index.html
+  - title: Architecture Overview
+    url: /ArchitectureOverview.html
