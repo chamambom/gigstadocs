@@ -6,13 +6,47 @@ has_children: true
 
 # Architecture Overview
 
-This document provides a high-level overview of the GigSta system architecture, focusing on backend structure, action system design, and recent platform changes. The goal is to maintain a clean, scalable, and easy-to-extend codebase suitable for a small-to-mid sized application.
+This document provides a high-level overview of the GigSta system architecture, including backend structure, frontend deployment, hosting environment, database design, booking action architecture, and recent platform changes. It serves as a single source of truth for how the system is built and how all components interact.
+
+---
+
+## System Hosting & Deployment
+
+### Frontend (Vue.js)
+- Hosted on: **Vercel** (SPA build served over CDN)
+- Uses Vue 3 + Composition API + Tailwind/DaisyUI
+- Communicates with backend through REST over HTTPS
+- Deployment: Automated build-and-deploy pipeline
+
+### Backend (FastAPI)
+- Hosted on: **Render**
+- Provides REST APIs for authentication, bookings, services, ratings, and geo-queries
+- Environment variables used for secrets and connection strings
+- Deploys from `main` branch via Render’s auto-deploy
+
+### Database
+- Hosted on: **MongoDB Atlas**
+- ORM: **Beanie** (with ongoing migration toward PyMongo Async)
+- Includes migration scripts for schema evolution
+- Access controlled through IP allowlists and app-level roles
+
+### DNS & Networking
+- Domain registered with: **CrazyDomains**
+- DNS delegated to: **Cloudflare**
+- Cloudflare handles:
+  - DNS records  
+  - SSL/TLS termination  
+  - Caching & security proxy  
+- Traffic flow:
+
+User → Cloudflare → Frontend (Vue) → Backend (Render) → MongoDB Atlas
+
 
 ---
 
 ## Backend Project Structure
 
-GigSta follows a lightweight modular structure that supports clarity and maintainability without over-engineering.
+GigSta uses a lightweight, modular backend structure that keeps logic clear and easy to maintain:
 
 /routes → API endpoints (FastAPI path operations)
 /schemas → Pydantic request/response models
@@ -21,64 +55,54 @@ GigSta follows a lightweight modular structure that supports clarity and maintai
 
 
 ### Why This Structure Works
-
-- Scales well for small teams.
-- Keeps business logic separate from API definitions.
-- Avoids unnecessary architectural complexity.
-- Supports gradual expansion as features grow.
+- Maintains clean boundaries between layers  
+- Easy to scale without unnecessary complexity  
+- Supports new features without architectural churn  
 
 ---
 
-## Action System Architecture
+## Booking Action System Architecture
 
-GigSta uses a split responsibility model for booking workflow actions.  
-The backend defines authoritative action rules, while the frontend controls presentation and UI behavior.
+GigSta uses a shared action model where the **backend defines rules** and the **frontend defines presentation**.
 
 ### Backend Responsibilities
-
 The backend exposes action metadata through `get_available_booking_actions()`:
 
-- `action_name` – internal action identifier  
+- `action_name` – internal identifier  
 - `button_label` – user-facing label  
-- `note` – text used for audit logs/history  
-- `is_critical` – marks destructive actions (e.g., cancellations)
+- `note` – audit log text  
+- `is_critical` – marks destructive actions  
 
-These actions map to state machine transitions that determine valid next steps in the booking lifecycle.
+These are tied to state-machine transitions that enforce booking lifecycle rules.
 
 ### Frontend Responsibilities
+The frontend uses `useBookingActions()` to apply UI metadata:
 
-The frontend enhances backend action data with UI-specific metadata provided through `useBookingActions`:
-
-- Icons (Lucide or custom SVG)
-- Button styles/variants (success, error, primary, etc.)
-- Interaction rules (confirmation modals, prompts)
+- Icons  
+- Button styles  
+- Confirmation modals  
+- UX behaviour  
 
 ### Adding a New Action
+1. **Backend:** Add new action and mapping to the state machine.  
+2. **Frontend:** Optionally extend `ACTION_UI_METADATA`.  
+   Defaults are applied if no UI metadata is provided.
 
-1. **Backend:**  
-   Add the action to the booking state machine and return it through the action service.
-
-2. **Frontend:**  
-   Optionally add UI metadata to `ACTION_UI_METADATA`.  
-   If omitted, a default icon and style are applied automatically.
-
-This separation ensures clean boundaries:  
-**backend = rules**, **frontend = presentation**.
+**Backend = business rules.  
+Frontend = UX.**
 
 ---
 
-## Platform Change: Migration from Motor to PyMongo Async
+## Platform Change: Motor → PyMongo Async
 
-MongoDB is deprecating the **Motor** driver.  
-GigSta is migrating to the **PyMongo Async API**, which now provides first-class async support.
+MongoDB is deprecating the Motor driver. GigSta is migrating to **PyMongo Async**, which is now fully async-native.
 
-### Benefits of PyMongo Async
+### Benefits
+- Better async performance  
+- Simpler integration  
+- No separate async driver layer to maintain  
 
-- Faster and more consistent async performance.
-- No separate async driver to maintain.
-- Cleaner integration with modern Python async patterns.
-
-Example import change:
+**Example change:**
 
 ```python
 # Old
@@ -87,18 +111,14 @@ from motor.motor_asyncio import AsyncIOMotorClient
 # New
 from pymongo import AsyncMongoClient
 
-
-This migration simplifies database operations and ensures long-term compatibility with MongoDB updates.
+This improves long-term compatibility and reduces driver fragmentation.
 
 Working Efficiently with GenAI Tools
 
-To get the most value when using AI for debugging or development:
+Share real code or logs, not summaries
 
-Ask for structured debug output (console logs, formatted traces).
+Break problems into small, isolated steps
 
-Break large problems into focused, isolated steps.
+Request structured output when debugging
 
-Provide real code snippets rather than summaries when possible.
-
-These practices reduce iteration time and improve the accuracy of AI-assisted troubleshooting.
-
+This reduces iteration time and improves solution accuracy.
