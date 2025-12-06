@@ -1,19 +1,6 @@
-remote_theme: pages-themes/dinky@v0.2.0
+remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-remote-theme
 
-# Navigation settings
-header_pages:
-  - index.md
-  - PresentationLayer.md
-  - ApplicationLayer.md
-  - DataLayer.md
-
-# Sidebar configuration (if using Dinky's built-in sidebar)
-nav:
-  - title: Presentation Layer (User Interface)
-    url: /PresentationLayer.html
-  - title: Application Layer (Business Logic)
-    url: /ApplicationLayer.html
-  - title: Data Layer (Database Management)
-    url: /DataLayer.html
+title: GigSta Documentation
+logo: /assets/logo.png # optional if you have a logo file
