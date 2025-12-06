@@ -10,6 +10,8 @@ This document provides a high-level overview of the GigSta system architecture, 
 
 ---
 
+![alt text](GigStaSystemArchitecture.png)
+
 ## System Hosting & Deployment
 
 ### Frontend (Vue.js)
