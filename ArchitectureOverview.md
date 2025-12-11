@@ -62,6 +62,30 @@ GigSta uses a lightweight, modular backend structure that keeps logic clear and 
 - Supports new features without architectural churn  
 
 ---
+### Hosting Decisions
+
+Information on using Cloudflare together with Vercel
+
+According to vercel ,
+
+Using reverse proxies like Cloudflare will limit Vercel's traffic visibility for security measures, introduce latency that degrades performance, and create cache management issues that may affect reliability. We do not recommend using a reverse proxy in front of Vercel.
+
+DNS 
+
+We recommend moving to Vercel as your DNS provider. Learn more.
+
+To find out more - https://vercel.com/kb/guide/cloudflare-with-vercel
+
+Render 
+
+Render has presense in singpore and in Sydney.
+
+
+MongoDB 
+
+MongoDB has presence in Singapore 
+
+```
 
 ## Booking Action System Architecture
 
