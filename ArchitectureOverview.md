@@ -64,6 +64,8 @@ GigSta uses a lightweight, modular backend structure that keeps logic clear and 
 ---
 ### Hosting Decisions
 
+The application backend is hosted on Render in Singapore, the database is hosted on MongoDB Atlas in Sydney, and the frontend is deployed on Vercel’s global CDN. The platform mainly serves users in Australia and New Zealand.
+
 Information on using Cloudflare together with Vercel
 
 According to vercel ,
