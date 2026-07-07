@@ -1,7 +1,7 @@
 ---
 title: Python Dependency Conflicts
-nav_order: 11
-parent: Architecture Overview
+nav_order: 3
+parent: Operations
 ---
 
 # Python Dependency Conflicts

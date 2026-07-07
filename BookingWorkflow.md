@@ -1,7 +1,7 @@
 ---
 title: Booking Workflow
-nav_order: 6
-parent: Architecture Overview
+nav_order: 3
+parent: Business Logic Layer
 ---
 
 # Booking Workflow

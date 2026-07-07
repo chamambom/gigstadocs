@@ -1,7 +1,7 @@
 ---
 title: Frontend Architecture
-nav_order: 2
-parent: Architecture Overview
+nav_order: 1
+parent: Frontend Layer
 ---
 
 # Frontend Architecture

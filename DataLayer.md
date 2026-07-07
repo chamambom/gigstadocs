@@ -1,7 +1,6 @@
 ---
 title: Data Layer
 nav_order: 5
-parent: Architecture Overview
 ---
 
 # Data Layer (Database Management)

@@ -1,7 +1,7 @@
 ---
 title: Backend Architecture
 nav_order: 1
-parent: Architecture Overview
+parent: Business Logic Layer
 ---
 
 # Backend Architecture

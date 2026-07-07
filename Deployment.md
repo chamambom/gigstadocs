@@ -1,7 +1,7 @@
 ---
 title: Deployment
-nav_order: 9
-parent: Architecture Overview
+nav_order: 1
+parent: Operations
 ---
 
 # Deployment

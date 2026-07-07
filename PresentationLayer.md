@@ -1,7 +1,7 @@
 ---
 title: Presentation Layer
-nav_order: 4
-parent: Architecture Overview
+nav_order: 2
+parent: Frontend Layer
 ---
 
 # Presentation Layer (User Interface)

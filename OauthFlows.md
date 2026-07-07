@@ -1,7 +1,7 @@
 ---
-title: OauthUserLoginFlows
-nav_order: 8
-parent: Architecture Overview
+title: OAuth Login Flows
+nav_order: 3
+parent: Frontend Layer
 ---
 
 # Oauth User Login Flows

@@ -1,7 +1,7 @@
 ---
 title: Application Layer
-nav_order: 3
-parent: Architecture Overview
+nav_order: 2
+parent: Business Logic Layer
 ---
 
 # Application Layer (Business Logic)

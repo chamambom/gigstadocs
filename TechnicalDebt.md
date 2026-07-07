@@ -1,7 +1,7 @@
 ---
 title: Technical Debt
-nav_order: 10
-parent: Architecture Overview
+nav_order: 2
+parent: Operations
 ---
 
 # Technical Debt

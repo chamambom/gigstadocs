@@ -54,12 +54,13 @@ gigsta-backend/
 
 ## Documentation Structure
 
-Use the left sidebar to explore each major layer of the system:
+Use the left sidebar to explore each major section of the platform:
 
-- **Architecture Overview** — high-level system design  
-- **Presentation Layer** — frontend structure, components, flows, and styling  
-- **Application Layer** — backend business logic, services, and integrations  
-- **Data Layer** — database models, migrations, and query patterns  
+- **Architecture Overview** — high-level system design, hosting, and deployment topology
+- **Frontend Layer** — Vue 3 project structure, components, Presentation Layer design system, and OAuth login flows
+- **Business Logic Layer** — backend architecture, application services, booking workflow, and onboarding workflows
+- **Data Layer** — MongoDB models, CRUD patterns, migrations, and query strategies
+- **Operations** — deployment infrastructure, known technical debt, and dependency conflict resolutions
 
 Each section breaks down the relevant components in detail.
 

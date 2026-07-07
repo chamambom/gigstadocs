@@ -1,7 +1,7 @@
 ---
-title: GigSta Onboarding & Booking Workflows Documentation
-nav_order: 7
-parent: Architecture Overview
+title: Onboarding Workflows
+nav_order: 4
+parent: Business Logic Layer
 ---
 
 ## Table of Contents
