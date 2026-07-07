@@ -1,6 +1,6 @@
 ---
 title: Booking Workflow
-nav_order: 7
+nav_order: 6
 parent: Architecture Overview
 ---
 
@@ -50,7 +50,9 @@ Examples:
 
 For each state, the backend returns the allowed actions through:
 
+```python
 get_available_booking_actions()
+```
 
 
 This ensures UI cannot bypass business rules.

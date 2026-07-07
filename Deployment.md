@@ -1,6 +1,6 @@
 ---
 title: Deployment
-nav_order: 6
+nav_order: 9
 parent: Architecture Overview
 ---
 

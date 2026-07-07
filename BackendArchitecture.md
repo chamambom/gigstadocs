@@ -1,6 +1,6 @@
 ---
 title: Backend Architecture
-nav_order: 6
+nav_order: 1
 parent: Architecture Overview
 ---
 
@@ -15,14 +15,16 @@ This document describes the high-level structure, module responsibilities, and r
 
 ## Project Structure
 
+```text
 gigsta-backend/
-├── routes/ # API endpoints (FastAPI path operations)
-├── schemas/ # Pydantic request/response models
-├── services/ # Business workflows and integrations
-├── crud/ # Database access and repository-style operations
-├── models/ # Beanie document models
-├── utils/ # Shared helpers and utilities
-└── migrations/ # Database migration scripts
+├── routes/      # API endpoints (FastAPI path operations)
+├── schemas/     # Pydantic request/response models
+├── services/    # Business workflows and integrations
+├── crud/        # Database access and repository-style operations
+├── models/      # Beanie document models
+├── utils/       # Shared helpers and utilities
+└── migrations/  # Database migration scripts
+```
 
 
 ---

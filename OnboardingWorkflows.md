@@ -1,6 +1,6 @@
 ---
 title: GigSta Onboarding & Booking Workflows Documentation
-nav_order: 9
+nav_order: 7
 parent: Architecture Overview
 ---
 

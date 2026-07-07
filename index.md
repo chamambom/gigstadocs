@@ -30,14 +30,16 @@ The project is structured to remain maintainable and scalable, with clean separa
 
 The backend follows a simple, modular layout suitable for small to mid-sized applications:
 
+```text
 gigsta-backend/
-├── routes/ # API endpoints (public HTTP interface)
-├── schemas/ # Pydantic request/response models
-├── services/ # Business logic and workflows
-├── crud/ # Database operations and query layer
-├── models/ # Beanie document models (MongoDB)
-├── utils/ # Shared helpers, transformations, validators
-└── migrations/ # Database migration scripts
+├── routes/       # API endpoints (public HTTP interface)
+├── schemas/      # Pydantic request/response models
+├── services/     # Business logic and workflows
+├── crud/         # Database operations and query layer
+├── models/       # Beanie document models (MongoDB)
+├── utils/        # Shared helpers, transformations, validators
+└── migrations/   # Database migration scripts
+```
 
 
 ### Why This Structure Works

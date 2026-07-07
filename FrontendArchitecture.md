@@ -1,6 +1,6 @@
 ---
 title: Frontend Architecture
-nav_order: 5
+nav_order: 2
 parent: Architecture Overview
 ---
 
@@ -14,15 +14,17 @@ This document outlines the main structure, state management, component organizat
 
 ## Project Structure
 
+```text
 src/
-├── assets/ # Images, icons, styles
-├── components/ # Reusable Vue components
-├── layouts/ # Page layouts (TopNavBar, Sidebar, etc.)
-├── pages/ # Route-level pages
-├── router/ # Vue Router configuration
-├── store/ # Vuex or Pinia stores
+├── assets/      # Images, icons, styles
+├── components/  # Reusable Vue components
+├── layouts/     # Page layouts (TopNavBar, Sidebar, etc.)
+├── pages/       # Route-level pages
+├── router/      # Vue Router configuration
+├── store/       # Vuex or Pinia stores
 ├── composables/ # Reusable composition functions (hooks)
-└── utils/ # Client-side helper functions
+└── utils/       # Client-side helper functions
+```
 
 
 ---

@@ -1,6 +1,6 @@
 ---
 title: Technical Debt
-nav_order: 8
+nav_order: 10
 parent: Architecture Overview
 ---
 
@@ -12,10 +12,12 @@ This document provides decisions that have been made but contributed to Technica
 
 My current backend Architecture (FastAPI)
 
-├─ Routes & APIs # route handlers 
-├─ Services / Business Logic 
-├─ CRUD Layer # interacts with Models for DB operations 
-└─ Integrations # Stripe, Addressable.dev, Cloudflare R2. 
+```text
+├─ Routes & APIs        # route handlers
+├─ Services / Business Logic
+├─ CRUD Layer           # interacts with Models for DB operations
+└─ Integrations         # Stripe, Addressable.dev, Cloudflare R2
+```
 
 
 My services which contains the business logic also contain the Crud
@@ -223,6 +225,7 @@ You could split like this:
 
 CRUD Layer – simple DB operations:
 
+```python
 class ServiceCRUD:
     @staticmethod
     async def get_active_services() -> list:
@@ -231,10 +234,11 @@ class ServiceCRUD:
     @staticmethod
     async def get_subcategory(subcategory_id):
         return await SubCategories.get(subcategory_id)
-
+```
 
 Service Layer – orchestration and enrichment:
 
+```python
 async def get_all_services(current_user: Optional[UserRead] = None):
     services = await ServiceCRUD.get_active_services()
     service_out_list = []
@@ -255,6 +259,7 @@ async def get_all_services(current_user: Optional[UserRead] = None):
         service_out_list.append(ServiceOutSchema(**service_dict))
 
     return service_out_list
+```
 
 
 ✅ Benefits:
@@ -266,8 +271,9 @@ CRUD layer can be reused elsewhere and easily tested independently.
 Cleaner separation of concerns.
 
 
-Current Setup
+### Current Setup
 
+```text
 API Layer (/services endpoint)
         │
         ▼
@@ -277,11 +283,13 @@ Services Layer (get_all_services)
         ├─ Filters ACTIVE services        <-- Business logic
         ├─ Adds permissions for user      <-- Business logic
         └─ Returns ServiceOutSchema list
+```
 
 Problem: DB access (CRUD) is mixed into business logic.
 
-Refactored Setup
+### Refactored Setup
 
+```text
 API Layer (/services endpoint)
         │
         ▼
@@ -299,6 +307,7 @@ CRUD Layer (Database Access Only)
         │
         ▼
 Models (Beanie/MongoDB Models)
+```
 
 
 Benefits of Refactor:

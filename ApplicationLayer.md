@@ -17,12 +17,14 @@ This layer is implemented using **FastAPI**, with a modular structure that keeps
 
 The Application Layer is composed of the following core modules:
 
-/routes → API endpoints (HTTP interfaces)
-/schemas → Request/response validation (Pydantic)
-/services → Business workflows and integrations
-/utils → Helper functions, shared logic, transformations
-/models → Beanie document models (domain entities)
-/crud → Database operations and repository-style logic
+```text
+/routes    → API endpoints (HTTP interfaces)
+/schemas   → Request/response validation (Pydantic)
+/services  → Business workflows and integrations
+/utils     → Helper functions, shared logic, transformations
+/models    → Beanie document models (domain entities)
+/crud      → Database operations and repository-style logic
+```
 
 
 Each part contributes a specific responsibility to maintain code clarity and prevent tightly coupled modules.

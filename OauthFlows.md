@@ -1,6 +1,6 @@
 ---
 title: OauthUserLoginFlows
-nav_order: 10
+nav_order: 8
 parent: Architecture Overview
 ---
 

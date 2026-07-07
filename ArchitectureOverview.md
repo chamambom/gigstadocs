@@ -1,6 +1,6 @@
 ---
 title: Architecture Overview
-nav_order: 1
+nav_order: 2
 has_children: true
 ---
 
@@ -41,7 +41,9 @@ This document provides a high-level overview of the GigSta system architecture, 
   - Caching & security proxy  
 - Traffic flow:
 
+```text
 User → Cloudflare → Frontend (Vue) → Backend (Render) → MongoDB Atlas
+```
 
 
 ---
@@ -50,10 +52,12 @@ User → Cloudflare → Frontend (Vue) → Backend (Render) → MongoDB Atlas
 
 GigSta uses a lightweight, modular backend structure that keeps logic clear and easy to maintain:
 
-/routes → API endpoints (FastAPI path operations)
-/schemas → Pydantic request/response models
-/crud → Business logic and Beanie database operations
-/models → Beanie document models
+```text
+/routes   → API endpoints (FastAPI path operations)
+/schemas  → Pydantic request/response models
+/crud     → Business logic and Beanie database operations
+/models   → Beanie document models
+```
 
 
 ### Why This Structure Works
@@ -85,9 +89,9 @@ Render has presense in singpore and in Sydney.
 
 MongoDB 
 
-MongoDB has presence in Singapore 
+MongoDB has presence in Singapore
 
-```
+---
 
 ## Booking Action System Architecture
 
@@ -138,15 +142,16 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 # New
 from pymongo import AsyncMongoClient
+```
 
 This improves long-term compatibility and reduces driver fragmentation.
 
-Working Efficiently with GenAI Tools
+---
 
-Share real code or logs, not summaries
+## Working Efficiently with GenAI Tools
 
-Break problems into small, isolated steps
-
-Request structured output when debugging
+- Share real code or logs, not summaries
+- Break problems into small, isolated steps
+- Request structured output when debugging
 
 This reduces iteration time and improves solution accuracy.
